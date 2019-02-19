@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.require_path = "lib"
 
   s.add_development_dependency 'rspec', '~> 2.11.0'
-  s.add_development_dependency 'rails', '>= 4.0.0'
+  s.add_development_dependency 'rails', '>= 4.2.0'
   s.add_development_dependency 'mocha', '~> 0.9.10'
 
   s.rubyforge_project = s.name
