@@ -3,6 +3,13 @@ require 'rake'
 require 'rspec/core/rake_task'
 require 'yaml'
 
+module TempFixForRakeLastComment
+  def last_comment
+    last_description
+  end 
+end
+Rake::Application.send :include, TempFixForRakeLastComment
+
 ADAPTERS = YAML.load(File.read(File.dirname(__FILE__) + "/spec/database.yml")).keys
 
 desc "Run specs under all supported databases"

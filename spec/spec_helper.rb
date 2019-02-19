@@ -27,13 +27,17 @@ unless ActiveRecord::Base.connection.respond_to? :record_query
       record_query(args.first)
       execute_without_query_record(*args, &block)
     end
-    alias_method_chain :execute, :query_record
-
+    # alias_method_chain :execute, :query_record
+    alias_method :execute_without_query_record, :execute
+    alias_method :execute, :execute_with_query_record
+    
     def execute_batch_with_query_record(*args, &block)
       record_query(args.first)
       execute_batch_without_query_record(*args, &block)
     end
-    alias_method_chain :execute_batch, :query_record
+    # alias_method_chain :execute_batch, :query_record
+    alias_method :execute_batch_without_query_record, :execute_batch
+    alias_method :execute_batch, :execute_batch_with_query_record
   end
 end
 
