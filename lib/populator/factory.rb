@@ -83,13 +83,7 @@ module Populator
 
     def rows_sql_arr
       @records.map do |record|
-        quoted_attributes = record.attribute_values.map do |v|
-          if v.is_a?(Range)
-            rand(v)
-          else
-            @model_class.connection.quote(v)
-          end
-        end
+        quoted_attributes = record.attribute_values.map do {|v|@model_class.connection.quote(v)}
         "(#{quoted_attributes.join(', ')})"
       end
     end
